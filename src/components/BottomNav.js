@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import ShowChartIcon from '@material-ui/icons/ShowChart';
+import HomeIcon from '@material-ui/icons/Home';
 import ListIcon from '@material-ui/icons/List';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { Link, useLocation } from "react-router-dom";
@@ -26,8 +26,8 @@ export default function BottomNav() {
 
   const [value, setValue] = React.useState(() => {
     const path = location.pathname;
-    if(path === "list") return 1;
-    if(path === "help") return 2;
+    if(path === "/list") return 1;
+    if(path === "/help") return 2;
     return 0;
   });
 
@@ -41,8 +41,8 @@ export default function BottomNav() {
       className={classes.root}
     >
       <BottomNavigationAction 
-        label="STOCK" 
-        icon={<ShowChartIcon/>}
+        label="HOME" 
+        icon={<HomeIcon/>}
         component={Link}
         to="/" 
       />
@@ -50,13 +50,13 @@ export default function BottomNav() {
         label="LIST" 
         icon={<ListIcon />}
         component={Link}
-        to="/List" 
+        to="/list" 
       />
       <BottomNavigationAction 
         label="HELP" 
         icon={<HelpOutlineIcon />}
         component={Link}
-        to="/Help" 
+        to="/help" 
       />
     </BottomNavigation>
   );

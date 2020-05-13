@@ -1,20 +1,17 @@
 import React from "react";
 import TopBar from "../components/TopBar";
 import BottomNav from "../components/BottomNav";
-import { useParams } from "react-router-dom";
 
-
-const StockPage = () => {
-  const { symbol } = useParams();
-  
-  {console.log(symbol)}
+const HomePage = () => {
   return (
     <>
       <TopBar />
-
+      <div>
+        Home
+      </div>
       <BottomNav />
     </>
   );
 };
 
-export default StockPage;
+export default HomePage;

@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 
+import HomePage from './pages/HomePage';
 import ListPage from "./pages/ListPage";
 import HelpPage from "./pages/HelpPage";
 import StockPage from "./pages/StockPage";
@@ -27,11 +28,14 @@ function App() {
             <Route path="/list">
               <ListPage />
             </Route>
+            <Route path="/stocks/:symbol">
+              <StockPage />
+            </Route>
             <Route path="/help">
               <HelpPage />
             </Route>
             <Route path="/">
-              <StockPage />
+              <HomePage />
             </Route>
           </Switch>
       </div>

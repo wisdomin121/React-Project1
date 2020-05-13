@@ -5,9 +5,9 @@ const API_KEY = "bqlbvinrh5rfdbi8n3gg";
 
 export function fetchSymbols(description, displaySymbol, symbol){
   return async (dispatch) => {
-    const url = `${API_URL}/stock/symbol?`;
+    const symbol_url = `${API_URL}/stock/symbol?`;
     try{
-      const result = await axios(url, {params: {
+      const result = await axios(symbol_url, {params: {
         exchange: "US",
         token: API_KEY,
         description, displaySymbol, symbol
@@ -18,4 +18,3 @@ export function fetchSymbols(description, displaySymbol, symbol){
     }
   }
 }
-
