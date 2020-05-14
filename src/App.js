@@ -12,15 +12,15 @@ import HelpPage from "./pages/HelpPage";
 import StockPage from "./pages/StockPage";
 
 import { useDispatch } from "react-redux";
-import { fetchSymbols, fetchStock, fetchRate } from "./actions";
+import { fetchSymbols } from "./actions";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchSymbols());
-    dispatch(fetchStock());
-    dispatch(fetchRate());
   })
+
   return (
     <Router>
       <div className="App">
