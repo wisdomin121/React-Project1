@@ -26,7 +26,7 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar className={classes.appbar} position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" noWrap>
             STOCK
           </Typography>
         </Toolbar>

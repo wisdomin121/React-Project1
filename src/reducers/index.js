@@ -3,8 +3,10 @@ import produce from "immer";
 const baseState = {
   loading: false,
   error: "",
-  stocks: {},
-  symbols: {}
+  stock: {},
+  symbols: {},
+  rates: {},
+  allnews: {}
 }
 
 const reducer = produce((state, action) => {
@@ -13,6 +15,12 @@ const reducer = produce((state, action) => {
       action.payload.forEach(symbol => {
         state.symbols[symbol.displaySymbol] = symbol;
       });
+      break;
+    case 'FETCH_RATE':
+      state.rates = action.payload;
+      break;
+    case 'FETCH_STOCK':
+      state.stock = action.payload; 
       break;
     default:
       break;

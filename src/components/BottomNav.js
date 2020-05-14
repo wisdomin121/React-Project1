@@ -15,8 +15,14 @@ const useStyles = makeStyles({
     bottom: 0,
     width: "100%",
     "& .MuiBottomNavigationAction-root": {
-      minWidth: 0
+      minWidth: 0,
+    },
+    "& .Mui-selected": {
+      color: "white"
     }
+  },
+  navaction: {
+    color: "#383838"
   }
 });
 
@@ -45,18 +51,21 @@ export default function BottomNav() {
         icon={<HomeIcon/>}
         component={Link}
         to="/" 
+        className={classes.navaction}
       />
       <BottomNavigationAction 
         label="LIST" 
         icon={<ListIcon />}
         component={Link}
         to="/list" 
+        className={classes.navaction}
       />
       <BottomNavigationAction 
         label="HELP" 
         icon={<HelpOutlineIcon />}
         component={Link}
         to="/help" 
+        className={classes.navaction}
       />
     </BottomNavigation>
   );

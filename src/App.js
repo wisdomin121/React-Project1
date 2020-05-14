@@ -12,14 +12,14 @@ import HelpPage from "./pages/HelpPage";
 import StockPage from "./pages/StockPage";
 
 import { useDispatch } from "react-redux";
-import { fetchSymbols } from "./actions";
-
-
+import { fetchSymbols, fetchStock, fetchRate } from "./actions";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchSymbols("AGILENT TECHNOLOGIES INC", "A", "A"));
+    dispatch(fetchSymbols());
+    dispatch(fetchStock());
+    dispatch(fetchRate());
   })
   return (
     <Router>
