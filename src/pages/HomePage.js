@@ -56,7 +56,9 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     minWidth: 275,
-    marginTop: 20
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20
   },
   bullet: {
     display: 'inline-block',
@@ -104,11 +106,29 @@ const HomePage = () => {
             환율
           </Typography>
           <Typography variant="body2" component="p">
-            {rates['USD']}
+            <b>한국: </b> {rates['KRW']}
+          </Typography>
+          <Typography variant="body2" component="p">
+            <b>미국: </b> {rates['USD']} 
+          </Typography>
+          <Typography variant="body2" component="p">
+            <b>유럽연합: </b> {rates['EUR']} 
+          </Typography>
+          <Typography variant="body2" component="p">
+            <b>중국: </b> {rates['CNY']} 
+          </Typography>
+          <Typography variant="body2" component="p">
+            <b>일본: </b> {rates['JPY']}  
           </Typography>
         </CardContent>
       </Card>
 
+      <Card className={classes.root} variant="outlined">
+        <CardContent>
+
+        </CardContent>
+      </Card>
+      
       <BottomNav />
     </>
   );

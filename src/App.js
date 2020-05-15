@@ -11,16 +11,21 @@ import ListPage from "./pages/ListPage";
 import HelpPage from "./pages/HelpPage";
 import StockPage from "./pages/StockPage";
 
-import { useDispatch } from "react-redux";
-import { fetchSymbols, fetchRate } from "./actions";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSymbols, fetchRate, fetchStock, fetchCompanyNews } from "./actions";
 
 function App() {
   const dispatch = useDispatch();
+  const symbol = useSelector(state => state.stock.symbol)
 
   useEffect(() => {
-    dispatch(fetchSymbols());
     dispatch(fetchRate());
-  })
+    dispatch(fetchSymbols());
+    dispatch(fetchCompanyNews(symbol));
+  });
+  useEffect(() => {
+    console.log("제발 한 번만...");
+  }, dispatch(fetchStock("AAPL")));
 
   return (
     <Router>

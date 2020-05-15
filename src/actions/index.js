@@ -18,6 +18,26 @@ export function fetchSymbols(){
   }
 }
 
+export function fetchCompanyNews(symbol){
+  return async (dispatch) => {
+    const news_url = `${API_URL}/company-news?`
+    var today = new Date();
+    var Full_today = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDay()+10);
+    var Full_yesterday = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDay()+3);
+    try{
+      const result = await axios(news_url, {params: {
+        symbol: symbol,
+        from: Full_yesterday,
+        to: Full_today,
+        token: API_KEY
+      }});
+      dispatch({type: 'FETCH_COMPANY_NEWS', payload: result.data})
+    }catch(error){
+      console.error(error);
+    }
+  };
+}
+
 export function fetchRate(){
   return async (dispatch) => {
     const rate_url = `${API_URL}/forex/rates?`;
@@ -46,20 +66,3 @@ export function fetchStock(symbol){
     }
   }
 }
-
-// export function fetchNews(symbol){
-//   return async (dispatch) => {
-//     const news_url = `${API_URL}/company-news?`
-//     // var today = new Date();
-//     // var Full_today = today.getFullYear()+'-'+
-
-//     try{
-//       const result = await axios(news_url, {params: {
-//         symbol: symbol,
-//         // from: ,
-//         // to: today,
-//         token: API_KEY
-//       }})
-//     }
-//   }
-// }

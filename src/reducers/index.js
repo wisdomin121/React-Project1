@@ -6,7 +6,7 @@ const baseState = {
   stock: [],
   symbols: {},
   rates: {},
-  allnews: {}
+  companynews: {}
 }
 
 const reducer = produce((state, action) => {
@@ -21,6 +21,12 @@ const reducer = produce((state, action) => {
       break;
     case 'FETCH_STOCK':
       state.stock = action.payload; 
+      break;
+    case 'FETCH_COMPANY_NEWS':
+      state.companynews = {};
+      action.payload.forEach(cnews => {
+        state.companynews[cnews.headline] = cnews;
+      });
       break;
     default:
       break;
