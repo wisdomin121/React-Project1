@@ -25,7 +25,7 @@ export function fetchRate(){
       const result = await axios(rate_url, {params: {
         token: API_KEY
       }});
-      dispatch({type: 'FETCH_RATE', payload: result.data});
+      dispatch({type: 'FETCH_RATE', payload: result.data.quote});
     }catch(error){
       console.error(error);
     }
@@ -46,3 +46,20 @@ export function fetchStock(symbol){
     }
   }
 }
+
+// export function fetchNews(symbol){
+//   return async (dispatch) => {
+//     const news_url = `${API_URL}/company-news?`
+//     // var today = new Date();
+//     // var Full_today = today.getFullYear()+'-'+
+
+//     try{
+//       const result = await axios(news_url, {params: {
+//         symbol: symbol,
+//         // from: ,
+//         // to: today,
+//         token: API_KEY
+//       }})
+//     }
+//   }
+// }

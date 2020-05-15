@@ -12,6 +12,9 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 
+import { fetchStock } from "../actions/index";
+import { useDispatch } from "react-redux";
+
 const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
@@ -55,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SymbolItem = ({company}) => {
+  const dispatch = useDispatch();
   const { description } = company;
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const handleListItemClick = (event, index) => {
@@ -70,7 +74,8 @@ const SymbolItem = ({company}) => {
         component = {Link}
         to={`/stocks/${company.symbol}`}
         selected={selectedIndex === 2}
-        onClick={(event) => handleListItemClick(event, 2)}
+        onClick={(event) => (handleListItemClick(event, 2),
+                            dispatch(fetchStock(company.symbol)))}
       >
         <ListItemText primary={
           <React.Fragment>

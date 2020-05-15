@@ -3,7 +3,7 @@ import produce from "immer";
 const baseState = {
   loading: false,
   error: "",
-  stock: {},
+  stock: [],
   symbols: {},
   rates: {},
   allnews: {}

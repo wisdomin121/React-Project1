@@ -12,13 +12,14 @@ import HelpPage from "./pages/HelpPage";
 import StockPage from "./pages/StockPage";
 
 import { useDispatch } from "react-redux";
-import { fetchSymbols } from "./actions";
+import { fetchSymbols, fetchRate } from "./actions";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchSymbols());
+    dispatch(fetchRate());
   })
 
   return (

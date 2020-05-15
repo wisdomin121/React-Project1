@@ -104,7 +104,7 @@ const HomePage = () => {
             환율
           </Typography>
           <Typography variant="body2" component="p">
-            {rates.base}
+            {rates['USD']}
           </Typography>
         </CardContent>
       </Card>
