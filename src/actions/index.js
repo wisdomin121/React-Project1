@@ -66,3 +66,29 @@ export function fetchStock(symbol){
     }
   }
 }
+
+export function fetchCandle(symbol){
+  return async (dispatch) => {
+    const candle_url = `${API_URL}/stock/candle?`;
+    try{
+      const result = await axios(candle_url, {params: {
+        symbol: symbol,
+        resolution: 60,
+        from: 1572651390,
+        to: 1572910590,
+        token: API_KEY
+      }});
+      var r_result = [];
+      for(var i=0; i<result.data.c.length; i++){
+        var d = {};
+        d.x = new Date(result.data.t[i]*1000);
+        var list = [result.data.o[i], result.data.h[i], result.data.l[i], result.data.c[i]];
+        d.y = list;
+        r_result.push(d);
+      }
+      dispatch({type: 'FETCH_CANDLE', payload: r_result});
+    }catch(error){
+      console.error(error);
+    }
+  }
+}

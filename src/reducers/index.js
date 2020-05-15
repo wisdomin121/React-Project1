@@ -6,7 +6,8 @@ const baseState = {
   stock: [],
   symbols: {},
   rates: {},
-  companynews: {}
+  companynews: {},
+  candle: []
 }
 
 const reducer = produce((state, action) => {
@@ -27,6 +28,9 @@ const reducer = produce((state, action) => {
       action.payload.forEach(cnews => {
         state.companynews[cnews.headline] = cnews;
       });
+      break;
+    case 'FETCH_CANDLE':
+      state.candle = action.payload;
       break;
     default:
       break;

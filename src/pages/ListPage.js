@@ -1,8 +1,6 @@
 import React from "react";
 import _ from "lodash";
-import { useSelector } from "react-redux";
-import TopBar from "../components/TopBar";
-import BottomNav from "../components/BottomNav";
+import { useSelector, useDispatch } from "react-redux";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -11,8 +9,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
-import { fetchStock, fetchCompanyNews } from "../actions/index";
-import { useDispatch } from "react-redux";
+import { fetchStock, fetchCompanyNews, fetchCandle } from "../actions/index";
+import TopBar from "../components/TopBar";
+import BottomNav from "../components/BottomNav";
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -77,6 +76,7 @@ const SymbolItem = ({company}) => {
           handleListItemClick(event, 2);
           dispatch(fetchStock(company.symbol));
           dispatch(fetchCompanyNews(company.symbol));
+          dispatch(fetchCandle(company.symbol));
         }}
       >
         <ListItemText primary={
@@ -118,6 +118,7 @@ const ListPage = () => {
           {_.map(symbols, symbol => <SymbolItem key={symbol.symbol} company={symbol}/>)}
         </List>
       </div>
+      
       <BottomNav />
     </>
   );
