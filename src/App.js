@@ -7,7 +7,7 @@ import {
 import './App.css';
 import HomePage from './pages/HomePage';
 import ListPage from "./pages/ListPage";
-import HelpPage from "./pages/HelpPage";
+import AboutPage from "./pages/AboutPage";
 import StockPage from "./pages/StockPage";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSymbols, fetchRate, fetchStock, fetchCompanyNews, fetchCandle, fetchGeneralNews } from "./actions";
@@ -39,8 +39,8 @@ function App() {
               <Route path="/stocks/:symbol">
                 <StockPage />
               </Route>
-              <Route path="/help">
-                <HelpPage />
+              <Route path="/about">
+                <AboutPage />
               </Route>
               <Route path="/">
                 <HomePage />

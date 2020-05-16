@@ -118,29 +118,26 @@ const HomePage = () => {
       <div className={classes.carddiv}> 
         <Card className={classes.root} variant="outlined">
           <CardContent>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
-              환율
+            <Typography className={classes.news} variant="h5" component="h2" gutterBottom>
+              <b>Exchange Rate</b>
             </Typography>
             <Typography variant="body2" component="p">
-              <b>한국: </b> {rates['KRW']}
+              <b>한국(KRW): </b> {rates['KRW']}
             </Typography>
             <Typography variant="body2" component="p">
-              <b>미국: </b> {rates['USD']} 
+              <b>미국(USD): </b> {rates['USD']} 
             </Typography>
             <Typography variant="body2" component="p">
-              <b>유럽연합: </b> {rates['EUR']} 
+              <b>중국(CNY): </b> {rates['CNY']} 
             </Typography>
             <Typography variant="body2" component="p">
-              <b>중국: </b> {rates['CNY']} 
-            </Typography>
-            <Typography variant="body2" component="p">
-              <b>일본: </b> {rates['JPY']}  
+              <b>일본(JPY): </b> {rates['JPY']}  
             </Typography>
           </CardContent>
         </Card>
 
         <Card className={classes.root} variant="outlined">
-          <Typography gutterBottom variant="h5" component="h2" className={classes.news}>
+          <Typography className={classes.news} variant="h5" component="h2" gutterBottom>
             <b>General News</b>
           </Typography>
           <CardContent className={classes.cardcontent}>
