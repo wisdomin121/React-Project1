@@ -3,11 +3,12 @@ import produce from "immer";
 const baseState = {
   loading: false,
   error: "",
-  stock: [],
-  symbols: {},
   rates: {},
+  symbols: {},
+  stock: [],
+  candle: [],
   companynews: {},
-  candle: []
+  generalnews: {}
 }
 
 const reducer = produce((state, action) => {
@@ -28,6 +29,12 @@ const reducer = produce((state, action) => {
       action.payload.forEach(cnews => {
         state.companynews[cnews.headline] = cnews;
       });
+      break;
+    case 'FETCH_GENERAL_NEWS':
+      state.generalnews = {};
+      action.payload.forEach(gnews => {
+        state.generalnews[gnews.headline] = gnews;
+      })
       break;
     case 'FETCH_CANDLE':
       state.candle = action.payload;

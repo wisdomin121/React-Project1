@@ -23,23 +23,23 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const CompanyNews = ({cnews}) => {
+export const GeneralNews = ({gnews}) => {
   const classes = useStyles();
 
   return(
     <Card variant="outlined" className={classes.root}>
       <CardActionArea>
-        <CardMedia title={cnews.id} className={classes.media}>
-          <img src={cnews.image} alt={cnews.id} className={classes.image}/>
+        <CardMedia title={gnews.id} className={classes.media}>
+          <img src={gnews.image} alt={gnews.id} className={classes.image}/>
         </CardMedia> 
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            <Link href={cnews.url} className={classes.link}>
-              {cnews.headline}
+            <Link href={gnews.url} className={classes.link}>
+              {gnews.headline}
             </Link>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {cnews.summary}
+            {gnews.summary}
           </Typography>
         </CardContent>
       </CardActionArea>

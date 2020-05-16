@@ -31,11 +31,26 @@ export function fetchCompanyNews(symbol){
         to: Full_today,
         token: API_KEY
       }});
-      dispatch({type: 'FETCH_COMPANY_NEWS', payload: result.data})
+      dispatch({type: 'FETCH_COMPANY_NEWS', payload: result.data});
     }catch(error){
       console.error(error);
     }
   };
+}
+
+export function fetchGeneralNews(){
+  return async (dispatch) => {
+    const gnews_url = `${API_URL}/news?`;
+    try{
+      const result = await axios(gnews_url, {params: {
+        category: "general",
+        token: API_KEY
+      }});
+      dispatch({type: 'FETCH_GENERAL_NEWS', payload: result.data});
+    }catch(error){
+      console.error(error);
+    }
+  }
 }
 
 export function fetchRate(){

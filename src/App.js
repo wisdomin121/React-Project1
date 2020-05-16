@@ -10,7 +10,7 @@ import ListPage from "./pages/ListPage";
 import HelpPage from "./pages/HelpPage";
 import StockPage from "./pages/StockPage";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchSymbols, fetchRate, fetchStock, fetchCompanyNews, fetchCandle } from "./actions";
+import { fetchSymbols, fetchRate, fetchStock, fetchCompanyNews, fetchCandle, fetchGeneralNews } from "./actions";
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -20,12 +20,13 @@ function App() {
   useEffect(() => {
     dispatch(fetchRate());
     dispatch(fetchSymbols());
+    dispatch(fetchGeneralNews());
     dispatch(fetchCompanyNews(symbol));
     dispatch(fetchCandle(symbol));
   });
   useEffect(() => {
-    console.log("제발 한 번만...");
-  }, dispatch(fetchStock("AAPL")));
+    console.log("fetchStock 확인");
+  }, [dispatch(fetchStock("AAPL"))]);
 
   return (
     <Router>

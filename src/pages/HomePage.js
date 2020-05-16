@@ -1,13 +1,16 @@
 import React from "react";
-import TopBar from "../components/TopBar";
-import BottomNav from "../components/BottomNav";
+import _ from "lodash";
+import { useSelector } from "react-redux";
 import Typography from '@material-ui/core/Typography';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { useSelector } from "react-redux";
+import TopBar from "../components/TopBar";
+import BottomNav from "../components/BottomNav";
+import { GeneralNews } from '../components/GeneralNews';
+
 
 const useStyles = makeStyles((theme) => ({
   welcome: {
@@ -71,11 +74,23 @@ const useStyles = makeStyles((theme) => ({
   pos: {
     marginBottom: 12,
   },
+  cardcontent: {
+    display: "flex",
+    flexWrap:"wrap",
+    justifyContent: "center"
+  },
+  carddiv: {
+    marginBottom: 70
+  },
+  news: {
+    marginTop: 10
+  }
 }));
 
 const HomePage = () => {
   const classes = useStyles();
   const rates = useSelector(state => state.rates);
+  const generalnews = useSelector(state => state.generalnews);
   
   return (
     <>
@@ -99,35 +114,40 @@ const HomePage = () => {
           inputProps={{ 'aria-label': 'search' }}
         />
       </div>
+      
+      <div className={classes.carddiv}> 
+        <Card className={classes.root} variant="outlined">
+          <CardContent>
+            <Typography className={classes.title} color="textSecondary" gutterBottom>
+              환율
+            </Typography>
+            <Typography variant="body2" component="p">
+              <b>한국: </b> {rates['KRW']}
+            </Typography>
+            <Typography variant="body2" component="p">
+              <b>미국: </b> {rates['USD']} 
+            </Typography>
+            <Typography variant="body2" component="p">
+              <b>유럽연합: </b> {rates['EUR']} 
+            </Typography>
+            <Typography variant="body2" component="p">
+              <b>중국: </b> {rates['CNY']} 
+            </Typography>
+            <Typography variant="body2" component="p">
+              <b>일본: </b> {rates['JPY']}  
+            </Typography>
+          </CardContent>
+        </Card>
 
-      <Card className={classes.root} variant="outlined">
-        <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            환율
+        <Card className={classes.root} variant="outlined">
+          <Typography gutterBottom variant="h5" component="h2" className={classes.news}>
+            <b>General News</b>
           </Typography>
-          <Typography variant="body2" component="p">
-            <b>한국: </b> {rates['KRW']}
-          </Typography>
-          <Typography variant="body2" component="p">
-            <b>미국: </b> {rates['USD']} 
-          </Typography>
-          <Typography variant="body2" component="p">
-            <b>유럽연합: </b> {rates['EUR']} 
-          </Typography>
-          <Typography variant="body2" component="p">
-            <b>중국: </b> {rates['CNY']} 
-          </Typography>
-          <Typography variant="body2" component="p">
-            <b>일본: </b> {rates['JPY']}  
-          </Typography>
-        </CardContent>
-      </Card>
-
-      <Card className={classes.root} variant="outlined">
-        <CardContent>
-
-        </CardContent>
-      </Card>
+          <CardContent className={classes.cardcontent}>
+            {_.map(generalnews, gnews => <GeneralNews key={gnews.id} gnews={gnews}/>)}
+          </CardContent>
+        </Card>
+      </div>
       
       <BottomNav />
     </>

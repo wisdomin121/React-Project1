@@ -9,8 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import TopBar from "../components/TopBar";
 import BottomNav from "../components/BottomNav";
 import CompanyDetail from '../components/CompanyDetail';
-import { CompanyNews } from '../components/CompanyNews';
 import CompanyCandle from '../components/CompanyCandle';
+import { CompanyNews } from '../components/CompanyNews';
+
 
 const useStyles = makeStyles((theme) => ({
   root:{
