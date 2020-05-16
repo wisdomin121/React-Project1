@@ -1,12 +1,11 @@
 import React from 'react';
+import { useSelector } from "react-redux";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
-import { useSelector } from "react-redux";
 
 function createData(A, A_VALUE, B, B_VALUE){
   return { A, A_VALUE, B, B_VALUE };

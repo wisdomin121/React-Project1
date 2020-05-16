@@ -1,4 +1,5 @@
 import React, { useEffect }  from 'react';
+import { useDispatch } from "react-redux";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,24 +10,21 @@ import HomePage from './pages/HomePage';
 import ListPage from "./pages/ListPage";
 import AboutPage from "./pages/AboutPage";
 import StockPage from "./pages/StockPage";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchSymbols, fetchRate, fetchStock, fetchCompanyNews, fetchCandle, fetchGeneralNews } from "./actions";
 import ScrollToTop from './components/ScrollToTop';
+import { fetchSymbols, fetchRate, fetchStock, fetchCompanyNews, fetchCandle, fetchGeneralNews } from "./actions";
 
 function App() {
   const dispatch = useDispatch();
-  const symbol = useSelector(state => state.stock.symbol)
 
   useEffect(() => {
     dispatch(fetchRate());
     dispatch(fetchSymbols());
+    dispatch(fetchStock());
     dispatch(fetchGeneralNews());
-    dispatch(fetchCompanyNews(symbol));
-    dispatch(fetchCandle(symbol));
+    dispatch(fetchCompanyNews());
+    dispatch(fetchCandle());
   });
-  useEffect(() => {
-    console.log("fetchStock 확인");
-  }, [dispatch(fetchStock("AAPL"))]);
+
 
   return (
     <Router>

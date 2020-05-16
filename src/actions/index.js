@@ -107,3 +107,10 @@ export function fetchCandle(symbol){
     }
   }
 }
+
+export function setSymbol(symbol){
+  return{
+    type: "SET_SYMBOL",
+    payload: symbol
+  };
+}

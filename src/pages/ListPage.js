@@ -1,17 +1,18 @@
 import React from "react";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Link } from "react-router-dom";
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
-import { fetchStock, fetchCompanyNews, fetchCandle } from "../actions/index";
+import { fade, makeStyles } from '@material-ui/core/styles';
 import TopBar from "../components/TopBar";
 import BottomNav from "../components/BottomNav";
+import { fetchStock, fetchCompanyNews, fetchCandle } from "../actions/index";
+
 
 const useStyles = makeStyles((theme) => ({
   search: {

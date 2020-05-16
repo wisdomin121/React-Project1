@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
   infodiv: {
     width: "85%",
-    margin: "auto"
+    margin: "auto",
+    marginBottom: 70
   },
   question: {
     marginTop: 10

@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 const StockPage = () => {
   const classes = useStyles();
   const stock = useSelector(state => state.stock);
-  var companynews = useSelector(state => state.companynews);
+  const companynews = useSelector(state => state.companynews);
 
   return (
     <>
@@ -96,7 +96,7 @@ const StockPage = () => {
                 <b>A week's news</b>
               </Typography>
               <CardContent className={classes.cardcontent}>
-                {_.map(companynews, cnews => <CompanyNews key={cnews.id} cnews={cnews}/>)}
+                {_.map(companynews, cnews => <CompanyNews key={cnews.headline} cnews={cnews}/>)}
               </CardContent>
             </Card>
           </Grid>
