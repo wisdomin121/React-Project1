@@ -19,10 +19,10 @@ function App() {
   useEffect(() => {
     dispatch(fetchRate());
     dispatch(fetchSymbols());
-    dispatch(fetchStock());
+    dispatch(fetchStock("AAPL"));
     dispatch(fetchGeneralNews());
-    dispatch(fetchCompanyNews());
-    dispatch(fetchCandle());
+    dispatch(fetchCompanyNews("AAPL"));
+    dispatch(fetchCandle("AAPL"));
   });
 
 
